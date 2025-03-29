@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Uusi arvostelu</title>
+</head>
+
+<body>
+  <h1>Uusi arvostelu</h1>
+    <form action="/create_item" method="post">
+    <p>
+      Otsikko: <br />
+      <input type="text" name="title" />
+    </p>
+    <p>
+      Kirjan nimi: <br />
+      <input type="text" name="book_name" />
+    </p>
+    <p>
+        Tähdet (1 - 5): <br />
+        <input type="number" name="stars" min="1" max="5" step="1" value="3">
+      </p>
+    <p>
+      Arvostelu: <br />
+      <textarea name="review" rows="8" cols="60" ></textarea>
+    </p>
+    <input type="submit" value="Lähetä arvostelu" />
+  </form>
+</body>
+
+</html>

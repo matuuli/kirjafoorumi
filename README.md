@@ -1,4 +1,4 @@
-# kirjafoorumi
+# Kirjafoorumi - Suunnitelma
 
 • Käyttäjä pystyy luomaan tunnuksen ja kirjautumaan sisään sovellukseen.
 

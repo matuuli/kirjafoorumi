@@ -17,6 +17,7 @@
 
 # Välipalautus 2
 Sovelluksesta löytyy nyt seuraavat ominaisuudet:
+
 • Käyttäjä pystyy luomaan tunnuksen ja kirjautumaan sisään sovellukseen.
 
 • Käyttäjä pystyy lisäämään sovellukseen kirja-arvosteluja, joihin kuuluu otsikko, kirjan nimi, arvosana (tähtien määrä asteikolla 1-5) ja kirjoitettu arvostelu. Käyttäjä pystyy muokkaamaan ja poistamaan lisäämiään arvosteluja. 

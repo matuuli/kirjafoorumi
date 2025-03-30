@@ -25,3 +25,5 @@ Sovelluksesta löytyy nyt seuraavat ominaisuudet:
 • Käyttäjä näkee sovellukseen lisätyt kirja-arvostelut. Käyttäjä näkee sekä itse lisäämänsä että muiden käyttäjien lisäämät arvostelut.
 
 • Käyttäjä pystyy etsimään kirja-arvosteluja kirjan nimellä ja arvostelussa esiintyvillä sanoilla. Käyttäjä pystyy hakemaan sekä itse lisäämiään että muiden käyttäjien lisäämiä arvosteluja.
+
+Mitään salaus/suojaustoimintoja ei sovelluksessa vielä ole koska en ehtinyt niitä tekemään. 

@@ -5,6 +5,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 import config
 import db
 import items
+import users
 
 app = Flask(__name__)
 app.secret_key = config.secret_key
@@ -16,7 +17,15 @@ def require_login():
 @app.route("/")
 def index():
     all_items = items.get_items()
-    return render_template("index.html", items = all_items)
+    return render_template("index.html", items=all_items)
+
+@app.route("/user/<int:user_id>")
+def show_user(user_id):
+    user = users.get_user(user_id)
+    if not user:
+        abort(404)
+    items = users.get_items(user_id)
+    return render_template("show_user.html", user=user, items=items)
 
 @app.route("/find_item")
 def find_item():
@@ -26,14 +35,14 @@ def find_item():
     else:
         query = ""
         results = []
-    return render_template("find_item.html", query = query, results = results)
+    return render_template("find_item.html", query=query, results=results)
 
 @app.route("/item/<int:item_id>")
 def show_item(item_id):
     item = items.get_item(item_id)
     if not item:
         abort(404)
-    return render_template("show_item.html", item = item)
+    return render_template("show_item.html", item=item)
 
 @app.route("/new_item")
 def new_item():
@@ -67,7 +76,7 @@ def edit_item(item_id):
         abort(404)
     if item["user_id"] != session["user_id"]:
         abort(403)
-    return render_template("edit_item.html", item = item)
+    return render_template("edit_item.html", item=item)
 
 @app.route("/update_item", methods=["POST"])
 def update_item():
@@ -102,7 +111,7 @@ def remove_item(item_id):
     if item["user_id"] != session["user_id"]:
         abort(403)
     if request.method == "GET":
-        return render_template("remove_item.html", item = item)
+        return render_template("remove_item.html", item=item)
     if request.method == "POST":
         if "remove" in request.form:
             items.remove_item(item_id)

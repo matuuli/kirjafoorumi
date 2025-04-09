@@ -10,19 +10,19 @@
     <form action="/update_item" method="post">
     <p>
       Otsikko: <br />
-      <input type="text" name="title" value="{{ item.title }}"/>
+      <input type="text" name="title" value="{{ item.title }}" maxlength="50" required/>
     </p>
     <p>
       Kirjan nimi: <br />
-      <input type="text" name="book_name" value="{{ item.book_name }}"/>
+      <input type="text" name="book_name" value="{{ item.book_name }}" maxlength="80" required/>
     </p>
     <p>
         Tähdet (1 - 5): <br />
-        <input type="number" name="stars" min="1" max="5" step="1" value="{{ item.stars }}">
+        <input type="number" name="stars" min="1" max="5" step="1" value="{{ item.stars }}" required/>
       </p>
     <p>
       Arvostelu: <br />
-      <textarea name="review" rows="8" cols="60">{{ item.review }}</textarea>
+      <textarea name="review" rows="8" cols="60" maxlength="2000" required>{{ item.review }}</textarea>
     </p>
     <input type="hidden" name="item_id" value="{{ item.id }}" />
     <input type="submit" value="Päivitä arvostelu" />

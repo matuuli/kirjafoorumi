@@ -27,3 +27,12 @@ Sovelluksesta löytyy nyt seuraavat ominaisuudet:
 • Käyttäjä pystyy etsimään kirja-arvosteluja kirjan nimellä ja arvostelussa esiintyvillä sanoilla. Käyttäjä pystyy hakemaan sekä itse lisäämiään että muiden käyttäjien lisäämiä arvosteluja.
 
 Mitään salaus/suojaustoimintoja ei sovelluksessa vielä ole koska en ehtinyt niitä tekemään. 
+
+# Välipalautus 3
+
+• Sovellukseen on lisätty erilaisia suojaustoimintoja, jotta sovelluksen käyttäjä pääsee käsittelemään niitä tietoja mitä hänen kuuluukin.
+
+• Sovelluksessa on käyttäjäsivut, jotka näyttävät käyttäjän lisäämät tietokohteet.
+
+Muita ominaisuuksia, jotka tässä palautuksessa olisi pitänyt olla, ei vielä ole, koska en ehtinyt niitä tekemään :(
+

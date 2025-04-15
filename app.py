@@ -41,7 +41,8 @@ def show_item(item_id):
     item = items.get_item(item_id)
     if not item:
         abort(404)
-    return render_template("show_item.html", item=item)
+    classes = items.get_class(item_id)
+    return render_template("show_item.html", item=item, classes=classes)
 
 @app.route("/new_item")
 def new_item():
@@ -63,7 +64,12 @@ def create_item():
         abort(403)
     user_id = session["user_id"]
 
-    items.add_item(title, book_name, stars, review, user_id)
+    classes = []
+    genre = request.form["genre"]
+    if genre:
+        classes.append(("Genre", genre))
+
+    items.add_item(title, book_name, stars, review, user_id, classes)
 
     return redirect("/")
 

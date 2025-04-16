@@ -1,5 +1,17 @@
 import db
 
+def get_all_classes():
+    sql = "SELECT category, value FROM classes ORDER BY id"
+    result = db.query(sql)
+
+    classes = {}
+    for category, value in result:
+        classes[category] = []
+    for category, value in result:
+        classes[category].append(value)
+
+    return classes
+
 def add_item(title, book_name, stars, review, user_id, classes):
     sql = """INSERT INTO items (title, book_name, stars, review, user_id) VALUES (?, ?, ?, ?, ?)"""
     db.execute(sql, [title, book_name, stars, review, user_id])

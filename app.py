@@ -47,7 +47,8 @@ def show_item(item_id):
 @app.route("/new_item")
 def new_item():
     require_login()
-    return render_template("new_item.html")
+    classes = items.get_all_classes()
+    return render_template("new_item.html", classes=classes)
 
 @app.route("/create_item", methods=["POST"])
 def create_item():
@@ -65,9 +66,10 @@ def create_item():
     user_id = session["user_id"]
 
     classes = []
-    genre = request.form["genre"]
-    if genre:
-        classes.append(("Genre", genre))
+    for entry in request.form.getlist("classes"):
+        if entry:
+            parts = entry.split(":")
+            classes.append((parts[0], parts[1]))
 
     items.add_item(title, book_name, stars, review, user_id, classes)
 

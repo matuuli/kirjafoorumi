@@ -65,11 +65,17 @@ def create_item():
         abort(403)
     user_id = session["user_id"]
 
+    all_classes = items.get_all_classes()
+
     classes = []
     for entry in request.form.getlist("classes"):
         if entry:
-            parts = entry.split(":")
-            classes.append((parts[0], parts[1]))
+            category, value = entry.split(":")
+            if category not in all_classes:
+                abort(403)
+            if value not in all_classes[category]:
+                abort(403)
+            classes.append((category, value))
 
     items.add_item(title, book_name, stars, review, user_id, classes)
 
@@ -113,11 +119,17 @@ def update_item():
     if not review or len(review) > 2000:
         abort(403)
 
+    all_classes = items.get_all_classes()
+
     classes = []
     for entry in request.form.getlist("classes"):
         if entry:
-            parts = entry.split(":")
-            classes.append((parts[0], parts[1]))
+            category, value = entry.split(":")
+            if category not in all_classes:
+                abort(403)
+            if value not in all_classes[category]:
+                abort(403)
+            classes.append((category, value))
 
     items.update_item(item_id, title, book_name, stars, review, classes)
 

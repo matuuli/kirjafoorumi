@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 {% extends "layout.html" %}
 
 {% block title %}Kirjafoorumi{% endblock %}
@@ -5,9 +7,17 @@
 {% block content %}
 <h2>Arvostelut</h2>
 
-<ul>
-  {% for item in items %}
-  <li><a href="/item/{{ item.id }}">{{ item.title }} - {{ item.book_name }}</a></li>
-  {% endfor %}
-</ul>
+{% for item in items %}
+<div class="item">
+<a href="/item/{{ item.id }}">{{ item.title }} - {{ item.book_name }}</a>
+{% for star in range(item.stars) %}
+  <span class="fa fa-star checked"></span>
+{% endfor %}
+{% for star in range(5 - item.stars) %}
+  <span class="fa fa-star"></span>
+{% endfor %} <br />
+Kirjoittaja: <a href="/user/{{ item.user_id }}">{{ item.username }}</a> <br />
+Kommenttien määrä: {{ item.comment_count }}
+</div>
+{% endfor %}
 {% endblock %}

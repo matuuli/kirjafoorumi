@@ -1,47 +1,40 @@
-<!DOCTYPE html>
-<html>
+{% extends "layout.html" %}
 
-<head>
-  <title>Uusi arvostelu</title>
-</head>
+{% block title %}Uusi arvostelu{% endblock %}
 
-<body>
-  <h1>Uusi arvostelu</h1>
-    <form action="/create_item" method="post">
-    <p>
-      Otsikko: <br />
-      <input type="text" name="title" maxlength="50" required/>
-    </p>
-    <p>
-      Kirjan nimi: <br />
-      <input type="text" name="book_name" maxlength="80" required/>
-    </p>
-    <p>
-        Tähdet (1 - 5): <br />
-        <input type="number" name="stars" min="1" max="5" step="1" value="3" required/>
-      </p>
-    <p>
-      Arvostelu: <br />
-      <textarea name="review" rows="8" cols="60" maxlength="2000" required></textarea>
-    </p>
-    <p>
-      {% for class in classes %}
-      <p>
-        {{ class }}: <br />
-        <select name="classes">
-          <option value="">(valitse)</option>
-        {% for option in classes[class] %}
-          <option value="{{ class }}:{{ option }}">{{ option }}</option>
-        {% endfor %}
-        </select>
-      </p>
-      {% endfor %}
-    </p>
-    <input type="submit" value="Lähetä arvostelu" />
-  </form>
+{% block content %}
+<h2>Uusi arvostelu</h2>
+
+<form action="/create_item" method="post">
   <p>
-    <a href="/">Takaisin</a>
+    Otsikko: <br />
+    <input type="text" name="title" maxlength="50" required/>
   </p>
-</body>
-
-</html>
+  <p>
+    Kirjan nimi: <br />
+    <input type="text" name="book_name" maxlength="80" required/>
+  </p>
+  <p>
+      Tähdet (1 - 5): <br />
+      <input type="number" name="stars" min="1" max="5" step="1" value="3" required/>
+    </p>
+  <p>
+    Arvostelu: <br />
+    <textarea name="review" rows="8" cols="60" maxlength="2000" required></textarea>
+  </p>
+  <p>
+    {% for class in classes %}
+    <p>
+      {{ class }}: <br />
+      <select name="classes">
+        <option value="">(valitse)</option>
+      {% for option in classes[class] %}
+        <option value="{{ class }}:{{ option }}">{{ option }}</option>
+      {% endfor %}
+      </select>
+    </p>
+    {% endfor %}
+  </p>
+  <input type="submit" value="Lähetä arvostelu" />
+</form>
+{% endblock %}

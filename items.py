@@ -81,7 +81,7 @@ def remove_item(item_id):
     db.execute(sql, [item_id])
 
 def find_items(query):
-    sql = """SELECT id, title, book_name
+    sql = """SELECT id, title, book_name, stars
                 FROM items
                 WHERE review LIKE ? OR book_name LIKE ?
                 ORDER BY id DESC"""

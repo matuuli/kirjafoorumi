@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 {% extends "layout.html" %}
 
 {% block title %}Etsi Arvostelu{% endblock %}
@@ -13,10 +15,16 @@
 
 {% if query %}
 <h3>Tulokset</h3>
-  <ul>
-      {% for item in results %}
-      <li><a href="/item/{{ item.id }}">{{ item.title }} - {{ item.book_name }}</a></li>
-      {% endfor %}
-  </ul>
+  {% for item in results %}
+  <div class="item">
+    <a href="/item/{{ item.id }}">{{ item.title }} - {{ item.book_name }}</a>
+    {% for star in range(item.stars) %}
+    <span class="fa fa-star checked"></span>
+    {% endfor %}
+    {% for star in range(5 - item.stars) %}
+      <span class="fa fa-star"></span>
+    {% endfor %}
+  </div>
+  {% endfor %}
 {% endif %}
 {% endblock %}

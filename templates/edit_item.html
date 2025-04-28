@@ -3,7 +3,8 @@
 {% block title %}Arvostelun muokkaus{% endblock %}
 
 {% block content %}
-<h2>Arvostelun muokkaus</h2>
+<h2>{{ item.title }} - Arvostelu kirjasta {{ item.book_name }}</h2>
+<h3>Arvostelun muokkaus</h3>
 
 <form action="/update_item" method="post">
   <p>
@@ -40,4 +41,7 @@
   {% endfor %}
   <input type="submit" value="Päivitä arvostelu" />
 </form>
+<p>
+  <a href="/item/{{ item.id }}">Takaisin ilmoitukseen</a>
+</p>
 {% endblock %}

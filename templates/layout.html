@@ -7,32 +7,34 @@
 </head>
 
 <body>
-  <h1>Kirjafoorumi</h1>
-  {% if session.user_id %}
-  <p>
-    Olet kirjautunut nimellä <a href="/user/{{ session.user_id }}">{{ session.username }}</a>
-  </p>
-  {% endif %}
-
-  <p>
-    <a href="/">Etusivu</a> |
-    <a href="/find_item">Etsi arvostelu</a> |
+    <div class="header">
+        <h1>Kirjafoorumi</h1>
+    </div>
     {% if session.user_id %}
-    <a href="/new_item">Lisää arvostelu</a> |
-    <a href="/logout">Kirjaudu ulos</a>
-    {% else %}
-    <a href="/login">Kirjaudu sisään</a> |
-    <a href="/register">Luo tunnus</a>
+    <p>
+        Olet kirjautunut nimellä <a href="/user/{{ session.user_id }}">{{ session.username }}</a>
+    </p>
     {% endif %}
-  </p>
 
-  {% for message in get_flashed_messages() %}
-  <div class="info">
-    {{ message }}
-  </div>
-  {% endfor %}
+    <div class="nav">
+        <a href="/">Etusivu</a> |
+        <a href="/find_item">Etsi arvostelu</a> |
+        {% if session.user_id %}
+        <a href="/new_item">Lisää arvostelu</a> |
+        <a href="/logout">Kirjaudu ulos</a>
+        {% else %}
+        <a href="/login">Kirjaudu sisään</a> |
+        <a href="/register">Luo tunnus</a>
+        {% endif %}
+    </div>
 
-  {% block content %}{% endblock %}
+    {% for message in get_flashed_messages() %}
+    <div class="info">
+        {{ message }}
+    </div>
+    {% endfor %}
+
+    {% block content %}{% endblock %}
 </body>
 
 </html>

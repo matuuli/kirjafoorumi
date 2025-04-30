@@ -23,3 +23,22 @@ body {
     background-color: rgb(234, 21, 31);
     color: white;
   }
+
+.header {
+    background-color: rgb(244, 137, 236);
+    color: black;
+    padding: 1em;
+    margin: 0.5em 0;
+  }
+
+.nav {
+    background-color: rgb(243, 161, 238);
+    padding: 0.5em;
+    margin: 0.5em 0;
+  }
+
+.content {
+    background-color: rgb(217, 233, 246);
+    padding: 1em;
+    margin: 0.5em 0;
+  }

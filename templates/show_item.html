@@ -41,8 +41,8 @@
   <form action="/create_comment" method="post">
     Kommentti: <br />
     <textarea name="comment" rows="8" cols="60" maxlength="2000" required></textarea>
-    <input type="hidden" name="item_id" value="{{ item.id }}">
-    <br />
+    <input type="hidden" name="item_id" value="{{ item.id }}"> <br />
+    <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}" />
     <input type="submit" value="Lähetä kommentti" />
   </form>
 {% endif %}

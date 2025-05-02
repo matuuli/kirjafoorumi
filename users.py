@@ -9,7 +9,7 @@ def get_user(user_id):
     return result[0] if result else None
 
 def get_items(user_id):
-    sql = """SELECT id, title, book_name
+    sql = """SELECT id, title, book_name, stars
             FROM items
             WHERE user_id = ?
             ORDER BY id DESC"""

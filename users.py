@@ -15,6 +15,11 @@ def get_items(user_id):
             ORDER BY id DESC"""
     return db.query(sql, [user_id])
 
+def get_starsum(user_id):
+    sql = "SELECT SUM(stars) FROM items WHERE user_id = ?"
+    result = db.query(sql, [user_id])
+    return result[0]['SUM(stars)'] if result else None
+
 def create_user(username, password):
     password_hash = generate_password_hash(password)
     sql = "INSERT INTO users (username, password_hash) VALUES (?, ?)"

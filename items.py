@@ -26,8 +26,12 @@ def add_comment(item_id, user_id, comment):
     sql = """INSERT INTO comments (item_id, user_id, comment) VALUES (?, ?, ?)"""
     db.execute(sql, [item_id, user_id, comment])
 
+def remove_comment(item_id, comment_id):
+    sql = "DELETE FROM comments WHERE id = ? AND item_id = ?"
+    db.execute(sql, [comment_id, item_id])
+
 def get_comments(item_id):
-    sql = """SELECT comments.comment, users.id user_id, users.username
+    sql = """SELECT comments.id, comments.comment, users.id user_id, users.username
             FROM comments, users
             WHERE comments.item_id = ? AND comments.user_id = users.id
             ORDER BY comments.id DESC"""

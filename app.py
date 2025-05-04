@@ -119,6 +119,21 @@ def create_comment():
 
     return redirect("/item/" + str(item_id))
 
+@app.route("/remove_comments", methods=["POST"])
+def remove_comments():
+    require_login()
+    check_csrf()
+
+    item_id = request.form["item_id"]
+    item = items.get_item(item_id)
+    if not item:
+        abort(403)
+
+    for comment_id in request.form.getlist("comment_id"):
+        items.remove_comment(item_id, comment_id)
+
+    return redirect("/item/" + str(item_id))
+
 @app.route("/edit_item/<int:item_id>")
 def edit_item(item_id):
     require_login()

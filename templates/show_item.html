@@ -31,12 +31,23 @@
 {% endif %}
 </ul>
 <h3>Keskustelualue</h3>
-{% for comment in comments %}
-<div class="item">
-  {{ comment.comment }} <br /> - <a href="/user/{{ comment.user_id }}">{{ comment.username }}</a>
-</div>
-{% endfor %}
-{% if session.username %}
+<form action="/remove_comments" method="post">
+  {% for comment in comments %}
+  <div class="item">
+    <a href="/user/{{ comment.user_id }}">{{ comment.username }}</a>: <br />
+    {{ comment.comment }}
+    {% if session.username == comment.username %}
+      <input type="checkbox" name="comment_id" value="{{ comment.id }}">
+    {% endif %}
+  </div>
+  {% endfor %}
+  {% if session.user_id and comments %}
+    <input type="hidden" name="item_id" value="{{ item.id }}">
+    <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}" />
+    <input type="submit" value="Poista valitut">
+  {% endif %}
+</form>
+{% if session.user_id %}
   <h3>Uusi kommentti</h3>
   <form action="/create_comment" method="post">
     <label for="comment">Kommentti:</label><br />

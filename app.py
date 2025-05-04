@@ -37,10 +37,10 @@ def show_user(user_id):
     user = users.get_user(user_id)
     if not user:
         abort(404)
-    items = users.get_items(user_id)
+    user_items = users.get_items(user_id)
     stars_sum = users.get_starsum(user_id)
-    average = round(stars_sum / len(items), 1)
-    return render_template("show_user.html", user=user, items=items, average=average)
+    average = round(stars_sum / len(user_items), 1)
+    return render_template("show_user.html", user=user, user_items=user_items, average=average)
 
 @app.route("/find_item")
 def find_item():

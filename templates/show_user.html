@@ -8,11 +8,11 @@
 <h2>Käyttäjä {{ user.username }}</h2>
 
 <p>
-  Käyttäjällä on yhteensä {{ items | count }} arvostelua.
+  Käyttäjällä on yhteensä {{ user_items | count }} arvostelua.
   Käyttäjän arvosteluissa antamien tähtien keskiarvo on {{ average }}.
 </p>
 <h3>Arvostelut</h3>
-{% for item in items %}
+{% for item in user_items %}
   <div class="item">
     <a href="/item/{{ item.id }}">{{ item.title }} - {{ item.book_name }}</a>
     {% for star in range(item.stars) %}

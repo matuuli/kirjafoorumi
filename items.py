@@ -42,8 +42,9 @@ def get_class(item_id):
     return db.query(sql, [item_id])
 
 def get_items():
-    sql = """SELECT items.id, items.title, items.book_name, items.stars, users.id user_id, users.username,
-                COUNT(comments.id) comment_count
+    sql = """SELECT items.id, items.title, items.book_name, items.stars,
+                    users.id user_id, users.username,
+                    COUNT(comments.id) comment_count
             FROM items JOIN users ON items.user_id = users.id
                         LEFT JOIN comments ON items.id = comments.item_id
             GROUP BY items.id
